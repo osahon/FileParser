@@ -1,0 +1,56 @@
+Country,Year,filename,sex variable,age variable,level variable,CTOB,OTOB,CSMOKER
+Benin,2003,"bjall03watlantique.sas7bdat
+bjall03wborgou.sas7bdat",CR55,CR54,BJR56,CTOB,OTOB,CSMOKER
+Ethiopia,2003,etall03w.sas7bdat,CR55,ETR65,ETR67,CTOB,OTOB,CSMOKER
+Eritrea,2006,erall06w.sas7bdat,CR55,CR54,ERR56,CTOB,OTOB,CSMOKER
+Cape Verde,2007,cvall07w.sas7bdat,CR55,CVR73,CVR76,CTOB,OTOB,CSMOKER
+Comoros,2007,kmall07w.sas7bdat,CR55,CR54,KMR56,CTOB,OTOB,CSMOKER
+Seychelles,2007,scall07w.sas7bdat,CR53,SCR58,SCR60,CTOB,OTOB,CSMOKER
+Botswana,2008,bwall08w.sas7bdat,CR53,CR52,BWR54,CTOB,OTOB,CSMOKER
+Burundi,2008,biall08w.sas7bdat,CR53,CR52,BIR54,CTOB,OTOB,CSMOKER
+Central African Republic,2008,cfall08w.sas7bdat,CR53,CR52,CFR54,CTOB,OTOB,CSMOKER
+Chad,2008,tdall08w.sas7bdat,CR53,CR52,TDR56,CTOB,OTOB,CSMOKER
+Democratic Republic of the Congo,2008,"drall08wkinshasa.sas7bdat
+drall08lubumbashi.sas7bdat",CR53,CR52,DRR55,CTOB,OTOB,CSMOKER
+Equatorial Guinea,2008,gqall08w.sas7bdat,CR53,CR52,GQR58,CTOB,OTOB,CSMOKER
+Gambia,2008,gmall08w.sas7bdat,CR53,CR52,GMR54,CTOB,OTOB,CSMOKER
+Guinea,2008,gnall08w_national.sas7bdat,CR53,CR52,GNR54,CTOB,OTOB,CSMOKER
+Guinea-Bissau,2008,gwall08w.sas7bdat,CR53,CR52,GWR62,CTOB,OTOB,CSMOKER
+Lesotho,2008,lsall08w.sas7bdat,CR53,CR52,LSR61,CTOB,OTOB,CSMOKER
+Liberia,2008,lrall08w.sas7bdat,CR53,CR52,LRR54,CTOB,OTOB,CSMOKER
+Madagascar,2008,mgall08w.sas7bdat,CR53,CR52,MGR54,CTOB,OTOB,CSMOKER
+Mali,2008,mlall08w.sas7bdat,CR53,CR52,MLR54,CTOB,OTOB,CSMOKER
+Mauritius,2008,muall08w.sas7bdat,CR53,MUR81,MUR83,CTOB,,CSMOKER
+Namibia,2008,naall08w.sas7bdat,CR53,CR52,NAR55,CTOB,OTOB,CSMOKER
+Nigeria,2008,"ngall08wabuja.sas7bdat
+ngall08wcrossriverstate.sas7bdat
+ngall08wibaden.sas7bdat
+ngall08wkanos.sas7bdat
+ngall08wlagos.sas7bdat",CR53,CR52,NGR58,CTOB,OTOB,CSMOKER
+Rwanda,2008,rwall08w.sas7bdat,CR53,CR52,RWR54,CTOB,OTOB,CSMOKER
+Sierra Leone,2008,slall08w_national.sas7bdat,CR53,CR52,SLR55,CTOB,OTOB,CSMOKER
+United Republic of Tanzania,2008,"tzall08warusha.sas7bdat
+tzall08wdaressalaam.sas7bdat
+tzall08wkilimanjaro.sas7bdat",CR53,CR52,TZR54,CTOB,OTOB,CSMOKER
+Burkina Faso,2009,"bfall09wBoboDioulasso.sas7bdat
+bfall09wOuagadougou.sas7bdat",CR53,CR52,BFR56,CTOB,OTOB,CSMOKER
+Congo,2009,cgall09w.sas7bdat,CR53,CR52,CGR56,CTOB,OTOB,CSMOKER
+Côte d’Ivoire,2009,ciall09w.sas7bdat,CR53,CR52,CIR54,CTOB,OTOB,CSMOKER
+Ghana,2009,ghall09w.sas7bdat,CR53,CR52,GHR59,CTOB,OTOB,CSMOKER
+Malawi,2009,mwall09w_national.sas7bdat,CR53,CR52,MWR78,CTOB,OTOB,CSMOKER
+Mauritania,2009,mrall09w_national.sas7bdat,CR53,CR52,MRR75,CTOB,OTOB,CSMOKER
+Niger,2009,neall09w.sas7bdat,CR53,NER63,NER65,CTOB,OTOB,CSMOKER
+Swaziland,2009,szall09w.sas7bdat,CR53,CR52,SZR54,CTOB,OTOB,CSMOKER
+Angola,2010,aoall10w.sas7bdat,CR53,AOR1,AOR54,CTOB,OTOB,CSMOKER
+Sao Tome and Principe,2010,stall10w.sas7bdat,CR53,CR52,CR54,CTOB,OTOB,CSMOKER
+South Africa,2011,zaall11w.sas7bdat,CR53,ZAR1,ZAR3,CTOB,OTOB,CSMOKER
+Uganda,2011,ugall11w.sas7bdat,CR53,CR52,CR54,CTOB,OTOB,CSMOKER
+Zambia,2011,zmall11w.sas7bdat,CR53,CR52,CR54,CTOB,OTOB,CSMOKER
+Algeria,2013,dzall13w.sas7bdat,CR2,CR1,DZR3,CTOB,OTOB,CSMK
+Kenya,2013,keall13w.sas7bdat,CR2,CR1,KER3,CTOB,OTOB,CSMK
+Mozambique,2013,mzall13w.sas7bdat,CR2,CR1,MZR3,CTOB,OTOB,CSMK
+Senegal,2013,snall13w.sas7bdat,CR2,CR1,SNR3,CTOB,OTOB,CSMK
+Togo,2013,tgall13w.sas7bdat,CR2,CR1,TGR3,CTOB,OTOB,CSMK
+Cameroon,2014,cmall14w.sas7bdat,CR2,CR1,CMR3,CTOB,OTOB,CSMK
+Gabon,2014,gaall14w.sas7bdat,CR2,CR1,GAR3,CTOB,OTOB,CSMK
+Zimbabwe,2014,zball14w.sas7bdat,CR2,CR1,ZBR3,CTOB,OTOB,CSMK
