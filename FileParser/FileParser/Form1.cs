@@ -16,5 +16,16 @@ namespace FileParser
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void btnBrowseOutputPath_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+    }
 }
