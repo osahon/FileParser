@@ -39,6 +39,9 @@
 			this.btnBrowseOutputPath = new System.Windows.Forms.Button();
 			this.btnBrowseInputFile = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
+			this.fbdOutputFilePath = new System.Windows.Forms.FolderBrowserDialog();
+			this.lblYear = new System.Windows.Forms.Label();
+			this.cmbYear = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// lblCountry
@@ -57,7 +60,7 @@
 			this.cmbCountry.FormattingEnabled = true;
 			this.cmbCountry.Location = new System.Drawing.Point(117, 31);
 			this.cmbCountry.Name = "cmbCountry";
-			this.cmbCountry.Size = new System.Drawing.Size(259, 21);
+			this.cmbCountry.Size = new System.Drawing.Size(125, 21);
 			this.cmbCountry.TabIndex = 1;
 			// 
 			// ofdInputFile
@@ -98,7 +101,7 @@
 			// 
 			// btnStartProcessing
 			// 
-			this.btnStartProcessing.Location = new System.Drawing.Point(216, 198);
+			this.btnStartProcessing.Location = new System.Drawing.Point(274, 198);
 			this.btnStartProcessing.Name = "btnStartProcessing";
 			this.btnStartProcessing.Size = new System.Drawing.Size(75, 23);
 			this.btnStartProcessing.TabIndex = 6;
@@ -126,7 +129,7 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(301, 198);
+			this.btnClose.Location = new System.Drawing.Point(359, 198);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 0;
@@ -134,11 +137,30 @@
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
+			// lblYear
+			// 
+			this.lblYear.AutoSize = true;
+			this.lblYear.Location = new System.Drawing.Point(253, 37);
+			this.lblYear.Name = "lblYear";
+			this.lblYear.Size = new System.Drawing.Size(29, 13);
+			this.lblYear.TabIndex = 9;
+			this.lblYear.Text = "Year";
+			// 
+			// cmbYear
+			// 
+			this.cmbYear.FormattingEnabled = true;
+			this.cmbYear.Location = new System.Drawing.Point(288, 31);
+			this.cmbYear.Name = "cmbYear";
+			this.cmbYear.Size = new System.Drawing.Size(88, 21);
+			this.cmbYear.TabIndex = 10;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(486, 252);
+			this.Controls.Add(this.cmbYear);
+			this.Controls.Add(this.lblYear);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnBrowseInputFile);
 			this.Controls.Add(this.btnBrowseOutputPath);
@@ -170,6 +192,9 @@
         private System.Windows.Forms.Button btnBrowseOutputPath;
         private System.Windows.Forms.Button btnBrowseInputFile;
         private System.Windows.Forms.Button btnClose;
-    }
+		private System.Windows.Forms.FolderBrowserDialog fbdOutputFilePath;
+		private System.Windows.Forms.Label lblYear;
+		private System.Windows.Forms.ComboBox cmbYear;
+	}
 }
 

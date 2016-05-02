@@ -63,7 +63,9 @@ namespace FileParser
 		{
 			var senderComboBox = (ComboBox)sender;
 			var selectedCountryConfig = (CountryConfig) senderComboBox.SelectedItem;
-            
+
+			cmbYear.DataSource = ConfigList.Where(cl => cl.Country == selectedCountryConfig.Country).Select(cl => cl.Year).ToList();
+			
 		}
 
         private void btnBrowseOutputPath_Click(object sender, EventArgs e)
