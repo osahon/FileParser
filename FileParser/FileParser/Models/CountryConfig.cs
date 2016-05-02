@@ -13,7 +13,7 @@ namespace FileParser.Models
 		public string Filename { get; set; }
 		public string SexVariable { get; set; }
 		public string AgeVarialbe { get; set; }
-		public string LocalVariable { get; set; }
+		public string LevelVariable { get; set; }
 		public string CTOB { get; set; }
 		public string OTOB { get; set; }
 		public string CSmoker { get; set; }

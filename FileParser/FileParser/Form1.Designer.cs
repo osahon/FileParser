@@ -52,6 +52,8 @@
             // 
             // cmbCountry
             // 
+			this.cmbCountry.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+			this.cmbCountry.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(117, 31);
             this.cmbCountry.Name = "cmbCountry";
@@ -96,7 +98,7 @@
             // 
             // btnStartProcessing
             // 
-            this.btnStartProcessing.Location = new System.Drawing.Point(301, 198);
+			this.btnStartProcessing.Location = new System.Drawing.Point(216, 198);
             this.btnStartProcessing.Name = "btnStartProcessing";
             this.btnStartProcessing.Size = new System.Drawing.Size(75, 23);
             this.btnStartProcessing.TabIndex = 6;
@@ -122,16 +124,11 @@
             this.btnBrowseInputFile.Text = "Browse";
             this.btnBrowseInputFile.UseVisualStyleBackColor = true;
             // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(382, 198);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,6 +146,7 @@
             this.Controls.Add(this.lblCountry);
             this.Name = "Form1";
             this.Text = " ";
+			this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

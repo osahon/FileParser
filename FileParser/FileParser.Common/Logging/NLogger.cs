@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using NLog;
 using NLog.Targets;
 using LogLevel = FileParser.Common.Logging.LogLevel;
