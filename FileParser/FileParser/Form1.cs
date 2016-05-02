@@ -32,7 +32,7 @@ namespace FileParser
 		}
 		private void btnClose_Click(object sender, EventArgs e)
 		{
-
+			Application.Exit();
 		}
 
 		private List<CountryConfig> LoadCountryVariables()
@@ -71,10 +71,6 @@ namespace FileParser
 
 
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-    }
+		
+	}
 }
