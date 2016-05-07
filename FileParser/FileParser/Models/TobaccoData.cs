@@ -8,6 +8,8 @@ namespace FileParser.Models
 {
 	public class TobaccoData
 	{
+		public string Country { get; set; }
+		public string Year { get; set; }
 		public decimal PercentTotal { get; set; }
 		public decimal LowerNintyFivePercentTotal { get; set; }
 		public decimal UpperNintyFivePercentTotal { get; set; }

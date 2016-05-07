@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using CsvHelper;
 using CsvHelper.Configuration;
 using FileParser.Models;
+using FileParser.Extensions;
 
 namespace FileParser
 {
@@ -20,7 +21,8 @@ namespace FileParser
 	{
 		private List<CountryConfig> ConfigList => LoadCountryVariables();
 		private CountryConfig SelectedCountryConfig ;
-        public Form1()
+		private List<TobaccoData> ValidDataList = new List<TobaccoData>();
+		public Form1()
 		{
 			InitializeComponent();
 			
@@ -61,6 +63,14 @@ namespace FileParser
 		{
 			BindCountryComboBox();
 			this.cmbCountry.SelectedValueChanged += CmbCountry_SelectedValueChanged;
+			rtbInfoBox.Text = "";
+			rtbInfoBox.TextChanged += RtbInfoBox_TextChanged;
+		}
+
+		private void RtbInfoBox_TextChanged(object sender, EventArgs e)
+		{
+			RichTextBox currentTextBox = (RichTextBox) sender;
+			currentTextBox.ScrollToCaret();
 		}
 
 		private void CmbCountry_SelectedValueChanged(object sender, EventArgs e)
@@ -95,24 +105,21 @@ namespace FileParser
 		{
 			if (IsValid())
 			{
-				//var validDataList = new List<TobaccoData>();
-				var validData = PreferredTableParser.Parse(txtInputFile.Text, txtOutPutFilePath.Text, SelectedCountryConfig);
-
-				//validDataList.Add(validData);
-				string outputFileName = DateTime.Now.ToString("MM_dd_yyyy") + ".csv";
-				var csvConfig = new CsvConfiguration
+				try
 				{
-					DetectColumnCountChanges = true,
-					ThrowOnBadData = true,
-					Encoding = Encoding.UTF8
-				};
-				using (var fileStream = File.Open(outputFileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
-				using (TextWriter textWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
-				using (var csv = new CsvWriter(textWriter, csvConfig))
-				{
-					csv.Configuration.RegisterClassMap<TobaccoDataMap>();
-					csv.WriteRecord(validData);
+					var validData = PreferredTableParser.Parse(txtInputFile.Text, SelectedCountryConfig);
+					ValidDataList.Add(validData);
+					rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + "processed!", Color.Black);
 				}
+				catch (Exception)
+				{
+					rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " NOT processed!", Color.Red);
+				}
+				
+			}
+			else
+			{
+				MessageBox.Show("Error: Invalid input selection", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			}
 		}
 
@@ -130,6 +137,27 @@ namespace FileParser
 			if (txtOutPutFilePath.Text.Trim().Length == 0)
 				return false;
 			return true;
+		}
+
+		private void btnSaveData_Click(object sender, EventArgs e)
+		{
+			string outputFileName = txtOutPutFilePath.Text + "\\" + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + ".csv";
+			var csvConfig = new CsvConfiguration
+			{
+				DetectColumnCountChanges = true,
+				ThrowOnBadData = true,
+				Encoding = Encoding.UTF8
+			};
+			using (var fileStream = File.Open(outputFileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+			using (TextWriter textWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
+			using (var csv = new CsvWriter(textWriter, csvConfig))
+			{
+				csv.Configuration.RegisterClassMap<TobaccoDataMap>();
+				csv.Configuration.HasHeaderRecord = true;
+				csv.Configuration.RegisterClassMap<TobaccoDataMap>();
+				csv.WriteRecords(ValidDataList);
+			}
+			MessageBox.Show("File Saved: " + outputFileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }

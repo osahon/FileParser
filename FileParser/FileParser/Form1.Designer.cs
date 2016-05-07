@@ -42,6 +42,8 @@
 			this.fbdOutputFilePath = new System.Windows.Forms.FolderBrowserDialog();
 			this.lblYear = new System.Windows.Forms.Label();
 			this.cmbYear = new System.Windows.Forms.ComboBox();
+			this.btnSaveData = new System.Windows.Forms.Button();
+			this.rtbInfoBox = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
 			// lblCountry
@@ -60,7 +62,7 @@
 			this.cmbCountry.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbCountry.FormattingEnabled = true;
 			this.cmbCountry.Location = new System.Drawing.Point(234, 60);
-			this.cmbCountry.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.cmbCountry.Margin = new System.Windows.Forms.Padding(6);
 			this.cmbCountry.Name = "cmbCountry";
 			this.cmbCountry.Size = new System.Drawing.Size(246, 33);
 			this.cmbCountry.TabIndex = 1;
@@ -82,7 +84,7 @@
 			// txtInputFile
 			// 
 			this.txtInputFile.Location = new System.Drawing.Point(234, 138);
-			this.txtInputFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.txtInputFile.Margin = new System.Windows.Forms.Padding(6);
 			this.txtInputFile.Name = "txtInputFile";
 			this.txtInputFile.Size = new System.Drawing.Size(514, 31);
 			this.txtInputFile.TabIndex = 3;
@@ -90,7 +92,7 @@
 			// txtOutPutFilePath
 			// 
 			this.txtOutPutFilePath.Location = new System.Drawing.Point(234, 215);
-			this.txtOutPutFilePath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.txtOutPutFilePath.Margin = new System.Windows.Forms.Padding(6);
 			this.txtOutPutFilePath.Name = "txtOutPutFilePath";
 			this.txtOutPutFilePath.Size = new System.Drawing.Size(514, 31);
 			this.txtOutPutFilePath.TabIndex = 5;
@@ -107,10 +109,10 @@
 			// 
 			// btnStartProcessing
 			// 
-			this.btnStartProcessing.Location = new System.Drawing.Point(548, 381);
-			this.btnStartProcessing.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.btnStartProcessing.Location = new System.Drawing.Point(394, 704);
+			this.btnStartProcessing.Margin = new System.Windows.Forms.Padding(6);
 			this.btnStartProcessing.Name = "btnStartProcessing";
-			this.btnStartProcessing.Size = new System.Drawing.Size(150, 44);
+			this.btnStartProcessing.Size = new System.Drawing.Size(150, 46);
 			this.btnStartProcessing.TabIndex = 6;
 			this.btnStartProcessing.Text = "Start";
 			this.btnStartProcessing.UseVisualStyleBackColor = true;
@@ -119,7 +121,7 @@
 			// btnBrowseOutputPath
 			// 
 			this.btnBrowseOutputPath.Location = new System.Drawing.Point(764, 212);
-			this.btnBrowseOutputPath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.btnBrowseOutputPath.Margin = new System.Windows.Forms.Padding(6);
 			this.btnBrowseOutputPath.Name = "btnBrowseOutputPath";
 			this.btnBrowseOutputPath.Size = new System.Drawing.Size(106, 44);
 			this.btnBrowseOutputPath.TabIndex = 7;
@@ -130,7 +132,7 @@
 			// btnBrowseInputFile
 			// 
 			this.btnBrowseInputFile.Location = new System.Drawing.Point(764, 133);
-			this.btnBrowseInputFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.btnBrowseInputFile.Margin = new System.Windows.Forms.Padding(6);
 			this.btnBrowseInputFile.Name = "btnBrowseInputFile";
 			this.btnBrowseInputFile.Size = new System.Drawing.Size(106, 44);
 			this.btnBrowseInputFile.TabIndex = 8;
@@ -140,10 +142,10 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(718, 381);
-			this.btnClose.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.btnClose.Location = new System.Drawing.Point(718, 704);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(6);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(150, 44);
+			this.btnClose.Size = new System.Drawing.Size(150, 46);
 			this.btnClose.TabIndex = 0;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -163,16 +165,38 @@
 			// 
 			this.cmbYear.FormattingEnabled = true;
 			this.cmbYear.Location = new System.Drawing.Point(576, 60);
-			this.cmbYear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.cmbYear.Margin = new System.Windows.Forms.Padding(6);
 			this.cmbYear.Name = "cmbYear";
 			this.cmbYear.Size = new System.Drawing.Size(172, 33);
 			this.cmbYear.TabIndex = 10;
+			// 
+			// btnSaveData
+			// 
+			this.btnSaveData.Location = new System.Drawing.Point(556, 704);
+			this.btnSaveData.Margin = new System.Windows.Forms.Padding(6);
+			this.btnSaveData.Name = "btnSaveData";
+			this.btnSaveData.Size = new System.Drawing.Size(150, 46);
+			this.btnSaveData.TabIndex = 11;
+			this.btnSaveData.Text = "Write";
+			this.btnSaveData.UseVisualStyleBackColor = true;
+			this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+			// 
+			// rtbInfoBox
+			// 
+			this.rtbInfoBox.Location = new System.Drawing.Point(59, 298);
+			this.rtbInfoBox.Name = "rtbInfoBox";
+			this.rtbInfoBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+			this.rtbInfoBox.Size = new System.Drawing.Size(811, 380);
+			this.rtbInfoBox.TabIndex = 12;
+			this.rtbInfoBox.Text = "";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(972, 485);
+			this.ClientSize = new System.Drawing.Size(972, 777);
+			this.Controls.Add(this.rtbInfoBox);
+			this.Controls.Add(this.btnSaveData);
 			this.Controls.Add(this.cmbYear);
 			this.Controls.Add(this.lblYear);
 			this.Controls.Add(this.btnClose);
@@ -185,7 +209,7 @@
 			this.Controls.Add(this.lblInputFfile);
 			this.Controls.Add(this.cmbCountry);
 			this.Controls.Add(this.lblCountry);
-			this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+			this.Margin = new System.Windows.Forms.Padding(6);
 			this.Name = "Form1";
 			this.Text = " ";
 			this.Load += new System.EventHandler(this.Form1_Load);
@@ -210,6 +234,8 @@
 		private System.Windows.Forms.FolderBrowserDialog fbdOutputFilePath;
 		private System.Windows.Forms.Label lblYear;
 		private System.Windows.Forms.ComboBox cmbYear;
+		private System.Windows.Forms.Button btnSaveData;
+		private System.Windows.Forms.RichTextBox rtbInfoBox;
 	}
 }
 

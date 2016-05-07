@@ -12,6 +12,8 @@ namespace FileParser
 	{
 		public TobaccoDataMap()
 		{
+			Map(m => m.Country).Name("Country");
+			Map(m => m.Year).Name("Year");
 			Map(m => m.PercentTotal).Name("Total Percent");
 			Map(m => m.PercentMale).Name("Male");
 			Map(m => m.PercentFemale).Name("Female");

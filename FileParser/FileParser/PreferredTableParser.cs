@@ -11,7 +11,7 @@ namespace FileParser
 	public class PreferredTableParser
 	{
 
-		public static TobaccoData Parse(string inputFile, string outputFilePath, CountryConfig configVar)
+		public static TobaccoData Parse(string inputFile, CountryConfig configVar)
 		{
 			string startSearchCriteria = "Analysis Variable" + " " + configVar.CSmoker;
 			string endSearchCriteria = "n ";
@@ -52,6 +52,8 @@ namespace FileParser
 			var nData = linesWorthProcessing[8].Trim().Substring(10).Replace("    ", "|").Replace(",", "").Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
 			return new TobaccoData
 			{
+				Country = configVar.Country,
+				Year = configVar.Year,
 				PercentTotal = Convert.ToDecimal(percentData[0]),
 				PercentMale = Convert.ToDecimal(percentData[1]),
 				PercentFemale = Convert.ToDecimal(percentData[2]),
