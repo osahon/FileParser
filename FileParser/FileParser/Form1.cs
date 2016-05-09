@@ -159,5 +159,11 @@ namespace FileParser
 			}
 			MessageBox.Show("File Saved: " + outputFileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
-	}
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 myAboutBox1 = new AboutBox1();
+            myAboutBox1.Show();
+        }
+    }
 }
