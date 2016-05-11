@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Models\CountryConfig.cs" />
     <Compile Include="Models\TobaccoData.cs" />
+    <Compile Include="ParseStatus.cs" />
     <Compile Include="PreferredTableParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -107,9 +107,23 @@ namespace FileParser
 			{
 				try
 				{
-					var validData = PreferredTableParser.Parse(txtInputFile.Text, SelectedCountryConfig);
-					ValidDataList.Add(validData);
-					rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + "processed!", Color.Black);
+					var parserObject = new PreferredTableParser(txtInputFile.Text, SelectedCountryConfig);
+				    var parsedData = parserObject.Parse();
+				    switch (parserObject.Status)
+				    {
+				        case ParseStatus.Sucess:
+				            ValidDataList.Add(parsedData);
+				            rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " processed!", Color.Black);
+				            break;
+                        case ParseStatus.SuccessWithNulls:
+                            ValidDataList.Add(parsedData);
+                            rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " processed! Empty Data Found", Color.Yellow);
+                            break;
+                        default:
+                            rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " NOT processed!", Color.Red);
+				            break;
+				    }
+
 				}
 				catch (Exception)
 				{
@@ -154,7 +168,7 @@ namespace FileParser
 			{
 				csv.Configuration.RegisterClassMap<TobaccoDataMap>();
 				csv.Configuration.HasHeaderRecord = true;
-				csv.Configuration.RegisterClassMap<TobaccoDataMap>();
+			    csv.Configuration.ThrowOnBadData = false;
 				csv.WriteRecords(ValidDataList);
 			}
 			MessageBox.Show("File Saved: " + outputFileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
