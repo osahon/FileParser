@@ -20,11 +20,11 @@ namespace FileParser
 	        InputFile = inputFile;
 	        CountryConfigVariable = configVar;
 	    }
-       public TobaccoData Parse()
+       public TobaccoData Parse(string variableName)
 		{
            try
            {
-                string startSearchCriteria = "Analysis Variable" + " " + CountryConfigVariable.CSmoker;
+                string startSearchCriteria = "Analysis Variable" + " " + variableName + " ";
                 string endSearchCriteria = "n ";
 
 

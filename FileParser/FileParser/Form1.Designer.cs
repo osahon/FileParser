@@ -46,6 +46,8 @@
             this.rtbInfoBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cblVariables = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,11 +108,11 @@
             // 
             // btnStartProcessing
             // 
-            this.btnStartProcessing.Location = new System.Drawing.Point(197, 366);
+            this.btnStartProcessing.Location = new System.Drawing.Point(197, 481);
             this.btnStartProcessing.Name = "btnStartProcessing";
             this.btnStartProcessing.Size = new System.Drawing.Size(75, 24);
             this.btnStartProcessing.TabIndex = 6;
-            this.btnStartProcessing.Text = "Start";
+            this.btnStartProcessing.Text = "Process";
             this.btnStartProcessing.UseVisualStyleBackColor = true;
             this.btnStartProcessing.Click += new System.EventHandler(this.btnStartProcessing_Click);
             // 
@@ -136,7 +138,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(359, 366);
+            this.btnClose.Location = new System.Drawing.Point(359, 481);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 24);
             this.btnClose.TabIndex = 0;
@@ -163,7 +165,7 @@
             // 
             // btnSaveData
             // 
-            this.btnSaveData.Location = new System.Drawing.Point(278, 366);
+            this.btnSaveData.Location = new System.Drawing.Point(278, 481);
             this.btnSaveData.Name = "btnSaveData";
             this.btnSaveData.Size = new System.Drawing.Size(75, 24);
             this.btnSaveData.TabIndex = 11;
@@ -173,11 +175,11 @@
             // 
             // rtbInfoBox
             // 
-            this.rtbInfoBox.Location = new System.Drawing.Point(30, 155);
-            this.rtbInfoBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtbInfoBox.Location = new System.Drawing.Point(30, 238);
+            this.rtbInfoBox.Margin = new System.Windows.Forms.Padding(2);
             this.rtbInfoBox.Name = "rtbInfoBox";
             this.rtbInfoBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbInfoBox.Size = new System.Drawing.Size(408, 200);
+            this.rtbInfoBox.Size = new System.Drawing.Size(408, 234);
             this.rtbInfoBox.TabIndex = 12;
             this.rtbInfoBox.Text = "";
             // 
@@ -187,7 +189,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(486, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(474, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -198,11 +200,34 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // cblVariables
+            // 
+            this.cblVariables.FormattingEnabled = true;
+            this.cblVariables.Items.AddRange(new object[] {
+            "CTOB",
+            "CSMOKER",
+            "OTOB"});
+            this.cblVariables.Location = new System.Drawing.Point(117, 151);
+            this.cblVariables.Name = "cblVariables";
+            this.cblVariables.Size = new System.Drawing.Size(120, 49);
+            this.cblVariables.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Variables";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 404);
+            this.ClientSize = new System.Drawing.Size(474, 510);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cblVariables);
             this.Controls.Add(this.rtbInfoBox);
             this.Controls.Add(this.btnSaveData);
             this.Controls.Add(this.cmbYear);
@@ -249,6 +274,8 @@
 		private System.Windows.Forms.RichTextBox rtbInfoBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.CheckedListBox cblVariables;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -13,8 +13,7 @@ namespace FileParser.Extensions
 		{
 			box.SelectionStart = box.TextLength;
 			box.SelectionLength = 0;
-
-			box.SelectionColor = color;
+            box.SelectionColor = color;
 			box.AppendText(text);
 			box.SelectionColor = box.ForeColor;
 		}

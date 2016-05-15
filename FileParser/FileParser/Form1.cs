@@ -21,8 +21,10 @@ namespace FileParser
 	{
 		private List<CountryConfig> ConfigList => LoadCountryVariables();
 		private CountryConfig SelectedCountryConfig ;
-		private List<TobaccoData> ValidDataList = new List<TobaccoData>();
-		public Form1()
+		private List<TobaccoData> ValidOTOBDataList = new List<TobaccoData>();
+        private List<TobaccoData> ValidCTOBDataList = new List<TobaccoData>();
+        private List<TobaccoData> ValidCSMOKERDataList = new List<TobaccoData>();
+        public Form1()
 		{
 			InitializeComponent();
 			
@@ -106,26 +108,18 @@ namespace FileParser
 			if (IsValid())
 			{
 				try
-				{
-					var parserObject = new PreferredTableParser(txtInputFile.Text, SelectedCountryConfig);
-				    var parsedData = parserObject.Parse();
-				    switch (parserObject.Status)
-				    {
-				        case ParseStatus.Sucess:
-				            ValidDataList.Add(parsedData);
-				            rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " processed!", Color.Black);
-				            break;
-                        case ParseStatus.SuccessWithNulls:
-                            ValidDataList.Add(parsedData);
-                            rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " processed! Empty Data Found", Color.Yellow);
-                            break;
-                        default:
-                            rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " NOT processed!", Color.Red);
-				            break;
-				    }
+                {
+                    if (cblVariables.GetItemChecked(0))
+                        ParseVariable(SelectedCountryConfig.CTOB, ConfigField.CTOB);
 
-				}
-				catch (Exception)
+                    if (cblVariables.GetItemChecked(1))
+                        ParseVariable(SelectedCountryConfig.CSmoker, ConfigField.CSMOKER);
+
+                    if (cblVariables.GetItemChecked(2))
+                        ParseVariable(SelectedCountryConfig.OTOB, ConfigField.OTOB);
+
+                }
+                catch (Exception)
 				{
 					rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " NOT processed!", Color.Red);
 				}
@@ -137,7 +131,45 @@ namespace FileParser
 			}
 		}
 
-		private bool IsValid()
+        private void ParseVariable(string variableToParseFor, ConfigField inputConfigField)
+        {
+            var parserObject = new PreferredTableParser(txtInputFile.Text, SelectedCountryConfig);
+            var parsedData = parserObject.Parse(variableToParseFor);
+            switch (parserObject.Status)
+            {
+                case ParseStatus.Sucess:
+                    LoadCorrectList(inputConfigField, parsedData);
+                    rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " processed for " + variableToParseFor.ToString() + "!", Color.Black);
+                    break;
+                case ParseStatus.SuccessWithNulls:
+                    LoadCorrectList(inputConfigField, parsedData);
+                    rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " processed for " + variableToParseFor.ToString() + "! Empty Data Found", Color.Yellow);
+                    break;
+                default:
+                    rtbInfoBox.AppendTextColor(Environment.NewLine + txtInputFile.Text + " NOT processed for " + variableToParseFor.ToString() + "!", Color.Red);
+                    break;
+            }
+        }
+
+	    private void LoadCorrectList(ConfigField configParam, TobaccoData dataToAdd)
+	    {
+	        switch (configParam)
+	        {
+                case ConfigField.CSMOKER:
+                    ValidCSMOKERDataList.Add(dataToAdd);
+	                break;
+                case ConfigField.CTOB:
+                    ValidCTOBDataList.Add(dataToAdd);
+	                break;
+                case ConfigField.OTOB:
+                    ValidOTOBDataList.Add(dataToAdd);
+	                break;
+                default:
+                    throw new InvalidDataException("Unkown config parameter " + configParam);
+	                break;
+	        }
+	    }
+        private bool IsValid()
 		{
 			if (cmbCountry.SelectedIndex == 0)
 				return false;
@@ -155,29 +187,42 @@ namespace FileParser
 
 		private void btnSaveData_Click(object sender, EventArgs e)
 		{
-			string outputFileName = txtOutPutFilePath.Text + "\\" + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + ".csv";
-			var csvConfig = new CsvConfiguration
-			{
-				DetectColumnCountChanges = true,
-				ThrowOnBadData = true,
-				Encoding = Encoding.UTF8
-			};
-			using (var fileStream = File.Open(outputFileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
-			using (TextWriter textWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
-			using (var csv = new CsvWriter(textWriter, csvConfig))
-			{
-				csv.Configuration.RegisterClassMap<TobaccoDataMap>();
-				csv.Configuration.HasHeaderRecord = true;
-			    csv.Configuration.ThrowOnBadData = false;
-				csv.WriteRecords(ValidDataList);
-			}
-			MessageBox.Show("File Saved: " + outputFileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
+            if (cblVariables.GetItemChecked(0))
+                WriteToFile(SelectedCountryConfig.CTOB, ValidCTOBDataList);
 
+            if (cblVariables.GetItemChecked(1))
+                WriteToFile(SelectedCountryConfig.CSmoker, ValidCSMOKERDataList);
+
+            if (cblVariables.GetItemChecked(2))
+                WriteToFile(SelectedCountryConfig.OTOB, ValidOTOBDataList);
+        }
+
+	    private void WriteToFile(string variable, List<TobaccoData> validDataList)
+	    {
+            string outputFileName = txtOutPutFilePath.Text + "\\" + variable + "_" + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + ".csv";
+            var csvConfig = new CsvConfiguration
+            {
+                DetectColumnCountChanges = true,
+                ThrowOnBadData = true,
+                Encoding = Encoding.UTF8
+            };
+            using (var fileStream = File.Open(outputFileName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+            using (TextWriter textWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
+            using (var csv = new CsvWriter(textWriter, csvConfig))
+            {
+                csv.Configuration.RegisterClassMap<TobaccoDataMap>();
+                csv.Configuration.HasHeaderRecord = true;
+                csv.Configuration.ThrowOnBadData = false;
+                csv.WriteRecords(validDataList);
+            }
+            MessageBox.Show("File(s) Saved: " + outputFileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox1 myAboutBox1 = new AboutBox1();
             myAboutBox1.Show();
         }
+
+       
     }
 }
